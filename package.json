@@ -1,0 +1,23 @@
+{
+  "name": "encoding-lang-sa",
+  "version": "0.0.1",
+  "description": "transciption conversion tool for Sanskrit",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "Sanskrit",
+    "transcription converter"
+  ],
+  "author": "mkunten",
+  "license": "MIT",
+  "devDependencies": {
+    "intelli-espower-loader": "*",
+    "mocha": "*",
+    "power-assert": "*"
+  },
+  "private": true,
+  "dependencies": {
+    "multichar-transcription": "git+https://github.com/mkunten/multichar-transcription.git"
+  }
+}
