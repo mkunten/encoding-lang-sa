@@ -46,10 +46,36 @@ console.log([ 'aśva', 'aiśvarya', 'āśva', 'aśvin', 'iśvara' ].sort(iastSor
 
 ### browser
 
-todo
+```html
+<script type="application/javascript" src="/path/to/static/js/encoding-lang-sa.js"></script>
+```
+
+#### convert
+
+```javascript
+// IAST to Devanāgarī
+var kh2iast = EncodingLangSa.converter('kh', 'iast');
+console.log(kh2iast('AsId rAjA nalo nAma vIrasenasuto balI/'));
+// -> āsīd rājā nalo nāma vīrasenasuto balī/
+
+// IAST to Devanāgarī
+var iast2deva = EncodingLangSa.converter('iast', 'deva', { removeSpace: true });
+console.log(iast2deva('^āsīd rājā nalo nāma vīrasenasuto balī/'));
+// -> आसीद्राजा नलो नाम वीरसेनसुतो बली ।
+</script>
+```
+
+#### sort
+
+```javascript
+// IAST
+var iastSorter = EncodingLangSa.sorter('iast');
+console.log([ 'aśva', 'aiśvarya', 'āśva', 'aśvin', 'iśvara' ].sort(iastSorter));
+// -> [ 'aśva', 'aśvin', 'āśva', 'iśvara', 'aiśvarya' ]
+```
 
 ## Version
-0.0.1
+0.0.2
 
 ## License
 MIT
