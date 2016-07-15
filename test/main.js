@@ -39,6 +39,32 @@ describe('EncodingLangSa', function() {
       assert.strictEqual('vāsāṃsi jīrṇāni yathā vihāya navāni gṛhṇāti nalo \'parāṇi/ tathā śarīrāṇi vihāya jīrṇāny ^anyāni saṃyāti navāni dehī//',
         conv('वासांसि जीर्णानि यथा विहाय नवानि गृह्णाति नलो ऽपराणि । तथा शरीराणि विहाय जीर्णान्य् अन्यानि संयाति नवानि देही ॥'));
     });
+
+    it('unsupported encodings', function() {
+      var mess = /EncodingLangSa: supported encodings are: deva, iast, kami, kh, _sorter/;
+      assert.throws(
+        function() {
+          EncodingLangSa.converter('iast', 'other');
+        },
+        function(err) {
+          if((err instanceof Error) && mess.test(err)) {
+            return true;
+          }
+        },
+        'unexpected error'
+      );
+      assert.throws(
+        function() {
+          EncodingLangSa.converter('other', 'iast');
+        },
+        function(err) {
+          if((err instanceof Error) && mess.test(err)) {
+            return true;
+          }
+        },
+        'unexpected error'
+      );
+    });
   });
 
   describe('sort', function() {
@@ -59,7 +85,7 @@ describe('EncodingLangSa', function() {
       arr = [
         'a', 'a.cv', 'a.cva', 'a.cva.h', 'a.cvii',
         'aa', 'ii.cvara.m', 'ii.cvara.h',
-        '.r', ':r', '.l', ':l', 'ai', 'au',
+        '.r', ':r', ':r', '.l', ':l', 'ai', 'au',
         'dev ena', 'deva',  'devena', 'devo', 'daiva'
       ];
       assert.deepEqual(arr, shuffle(arr).sort(sorter));
@@ -71,7 +97,7 @@ describe('EncodingLangSa', function() {
       arr = [
         'a', 'aśv', 'aśva', 'aśvaḥ', 'aśvī',
         'ā', 'īśvaraṃ', 'īśvaraḥ',
-        'ṛ', 'ṝ', 'ḷ', 'ḹ', 'ai', 'au',
+        'ṛ', 'ṝ', 'ṝ', 'ḷ', 'ḹ', 'ai', 'au',
         'dev ena', 'deva',  'devena', 'devo', 'daiva'
       ];
       assert.deepEqual(arr, shuffle(arr).sort(sorter));
@@ -83,8 +109,20 @@ describe('EncodingLangSa', function() {
       arr = [
         'अ', 'अश्व्', 'अश्व', 'अश्वः', 'अश्वी',
         'आ', 'ईश्वरं', 'ईश्वरः',
-        'ऋ', 'ॠ', 'ऌ', 'ॡ', 'ऐ', 'औ',
+        'ऋ', 'ॠ', 'ॠ', 'ऌ', 'ॡ', 'ऐ', 'औ',
         'देव् एन', 'देव',  'देवेन', 'देवो', 'दैव'
+      ];
+      assert.deepEqual(arr, shuffle(arr).sort(sorter));
+      assert.deepEqual(arr, shuffle(arr).sort(sorter));
+      assert.deepEqual(arr, shuffle(arr).sort(sorter));
+    });
+    it('kami again', function() {
+      sorter = EncodingLangSa.sorter('kami');
+      arr = [
+        'a', 'a.cv', 'a.cva', 'a.cva.h', 'a.cvii',
+        'aa', 'ii.cvara.m', 'ii.cvara.h',
+        '.r', ':r', ':r', '.l', ':l', 'ai', 'au',
+        'dev ena', 'deva',  'devena', 'devo', 'daiva'
       ];
       assert.deepEqual(arr, shuffle(arr).sort(sorter));
       assert.deepEqual(arr, shuffle(arr).sort(sorter));

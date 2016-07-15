@@ -3,7 +3,7 @@
   "version": "0.0.2",
   "description": "transciption conversion tool for Sanskrit",
   "scripts": {
-    "test": "mocha"
+    "test": "$(npm bin)/istanbul cover $(npm bin)/_mocha"
   },
   "keywords": [
     "Sanskrit",
@@ -12,10 +12,11 @@
   "author": "mkunten",
   "license": "MIT",
   "devDependencies": {
-    "intelli-espower-loader": "*",
-    "mocha": "*",
-    "power-assert": "*",
-    "webpack": "*"
+    "intelli-espower-loader": "^1.0.1",
+    "istanbul": "^0.4.4",
+    "mocha": "^2.5.3",
+    "power-assert": "^1.4.1",
+    "webpack": "^1.13.1"
   },
   "private": true,
   "dependencies": {
