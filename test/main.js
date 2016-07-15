@@ -55,7 +55,7 @@ describe('EncodingLangSa', function() {
       return arr;
     }
     it('kami', function() {
-      sorter = EncodingLangSa.sorter('kami')
+      sorter = EncodingLangSa.sorter('kami');
       arr = [
         'a', 'a.cv', 'a.cva', 'a.cva.h', 'a.cvii',
         'aa', 'ii.cvara.m', 'ii.cvara.h',

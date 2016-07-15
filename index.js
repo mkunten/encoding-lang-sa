@@ -355,7 +355,7 @@ module.exports = (function(options) {
 
   function converter(from, to, option) {
     if (!encs[from] || !encs[to]) {
-      throw new Error('EncodingLangSa: supported encodings is: '
+      throw new Error('EncodingLangSa: supported encodings are: '
         + Object.keys(encs).join(', '))
     }
     if (!funcs[from + '-' + to]) {
